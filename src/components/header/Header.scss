@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+.headerBrand {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.headerLogo {
+  height: 45px;
+  width: auto;
+}
+.pageLinks {
+  display: flex;
+  justify-content: space-evenly;
+}
+.linkItem {
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+  margin-left: 15px;
+}

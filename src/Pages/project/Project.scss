@@ -1,0 +1,37 @@
+@import "../../css/Common";
+
+.projectDetail {
+  width: $projectWidth;
+  margin: 0 auto;
+}
+.projectFrontImage {
+  margin-top:  50px;
+  margin-bottom: 100px;
+}
+.frontImage {
+  width: $projectWidth;
+  height: auto;
+}
+.projectInfo {
+  margin-bottom: 100px
+}
+.projectName {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+.projectDescription {
+  font-size: 18px;
+  word-spacing: 1px;
+}
+.projectImages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.projectImageFrame {
+  margin-bottom: 30px;
+}
+.projectImage {
+  object-fit: cover;
+}

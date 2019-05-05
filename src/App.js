@@ -1,29 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import styles from './Test.scss'
+import EnterPageComponent from "./Pages/enter/EnterPage";
+import {Route, BrowserRouter as Router} from "react-router-dom";
+import HomePageComponent from "./Pages/home/HomePage";
+import {ProjectPageComponent} from "./Pages/project/ProjectPage";
+import {ProjectDetailPageComponent} from "./Pages/project/ProjectDetailPage";
+import {AboutPageComponent} from "./Pages/about/AboutPage";
+import './css/App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div className={styles.test}>
-        test test
+      <div className="App">
+          <Router>
+              <Route path="/" exact component={EnterPageComponent} />
+              <Route path="/home" exact component={HomePageComponent} />
+              <Route path="/project" exact component={ProjectPageComponent} />
+              <Route path="/projectDetail/:id" exact component={ProjectDetailPageComponent} />
+              <Route path="/about" exact component={AboutPageComponent} />
+              <Route path="/admin" exact component={AboutPageComponent} />
+          </Router>
       </div>
-    </div>
   );
 }
 

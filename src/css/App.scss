@@ -1,0 +1,35 @@
+@import "Common";
+
+@font-face {
+  font-family: "didot";
+  src: url("./Didot.woff") format("woff");
+}
+
+$aspace-font: "didot", "Times New Roman", Times, serif;
+
+
+.App {
+  text-align: center;
+  font-family: $aspace-font;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

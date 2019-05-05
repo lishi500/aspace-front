@@ -1,0 +1,19 @@
+$item-gap: 20px;
+$border-gap: 100px;
+$home-width: calc(100% - 200px);
+
+.homeItem {
+  width: $home-width;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.homeItemLarge {
+  width: 100%;
+}
+.homeItemMiddle {
+}
+.homeItemSmall {
+}

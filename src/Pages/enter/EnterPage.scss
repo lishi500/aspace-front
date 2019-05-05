@@ -1,0 +1,43 @@
+//@import "../../css/Common";
+
+.enterPage {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+.enterFront {
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+.enterBox {
+  position: absolute;
+  top: 40vh;
+  left: -9999px;
+  right: -9999px;
+}
+.enterButton {
+  padding: 10px;
+  font-size: 64px;
+  border: 2px solid white;
+  width: 250px;
+  margin: 0 auto;
+  color: white;
+}
+.enterImage {
+  top: 0;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+  height: auto;
+  width: 100%;
+}
+.enterLogo {
+  border: 1px blue;
+  text-align: center;
+}
+
+.enterLogoImage {
+  height: 6vh;
+  width: auto;
+}
