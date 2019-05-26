@@ -1,9 +1,34 @@
 .frame {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
+.frameOuter {
+  position: relative;
+}
+.removableIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.5;
+}
+.removableIcon:hover {
+  opacity: 1;
+}
 .innerImage {
   object-fit: cover;
+}
+
+.sortableImageContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.sortableImageItem {
+  margin-right: 20px;
+  margin-bottom: 20px;
 }

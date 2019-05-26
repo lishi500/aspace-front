@@ -11,7 +11,6 @@ export class HeaderComponent extends React.Component{
             isExpand: true
         };
 
-        console.log(this.state)
     }
 
     renderLinkItems(route,name) {
@@ -26,14 +25,17 @@ export class HeaderComponent extends React.Component{
         return (
             <div className="header">
                 <div className="headerBrand">
-                    <Image className="headerLogo" name="logo.png" />
+                    <Link to="/home">
+                        <Image className="headerLogo" name="logo.png" />
+                    </Link>
                 </div>
                 <div className="pageLinks">
-                   {this.renderLinkItems("/project", "PROJECTS")}
-                   {this.renderLinkItems("/profile", "PROFILE")}
-                   {this.renderLinkItems("/contact", "CONTACT")}
-                   {this.renderLinkItems("/client", "CLIENT")}
-                   {this.renderLinkItems("/news", "NEWS")}
+                    {this.renderLinkItems("/home/residential", "RESIDENTIAL")}
+                    {this.renderLinkItems("/home/commercial", "COMMERCIAL")}
+                    {this.renderLinkItems("/profile", "PROFILE")}
+                    {this.renderLinkItems("/contact", "CONTACT")}
+                    {this.renderLinkItems("/client", "CLIENT")}
+                    {this.renderLinkItems("/news", "NEWS")}
                 </div>
             </div>
         );

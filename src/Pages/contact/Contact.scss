@@ -1,0 +1,30 @@
+@import "../../css/Common";
+
+.contactPage {
+  @include responsiveWidth;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.studio {
+  margin-top: 80px;
+  margin-bottom: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  align-items: center;
+}
+.contactTitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.enquiries {
+  margin-bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  align-items: center;
+  a {
+    color: inherit;
+  }
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import Image from "../image/Image";
+import "./Footer.scss"
 
 export function LinkIcon(iconImageName, linkUrl) {
     return  (
-        <a src={linkUrl} className="linkItem">
+        <a src={linkUrl} className="footerLinkIcon">
             <Image name={iconImageName} />
         </a>
     );

@@ -20,8 +20,10 @@ export class PhotoComponent extends React.Component {
 
         this.state = {
             isHovering: false
-        }
-        this.handleMouseHover = this.handleMouseHover.bind(this);
+        };
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseOut = this.handleMouseOut.bind(this);
+
     }
 
 
@@ -30,21 +32,19 @@ export class PhotoComponent extends React.Component {
         onClick(event, { photo, index });
     };
 
-    handleMouseHover() {
-        this.setState({isHovering: !this.state.isHovering});
+    handleMouseEnter() {
+        this.setState({isHovering: true});
+    }
+    handleMouseOut() {
+        this.setState({isHovering: false});
     }
 
-    toggleHoverState(state){
-        return {
-            isHovering: !state.isHovering,
-        };
-    }
 
     renderMaskInfo(photo, maskStyle) {
         const projectUrl = getProjectUrlRelative(photo.projectId);
         return (
             <React.Fragment >
-                <Link to={projectUrl} className="linkItem">
+                <Link to={projectUrl}>
                     <div className="photoMask" style={maskStyle}>
                     </div>
                     <div className="photoInfo" style={maskStyle}>
@@ -60,7 +60,6 @@ export class PhotoComponent extends React.Component {
                         </div>
                     </div>
                 </Link>
-
             </React.Fragment>
 
         );
@@ -72,8 +71,8 @@ export class PhotoComponent extends React.Component {
         return (
             <div
                 className="photoContainer"
-                onMouseEnter={this.handleMouseHover}
-                onMouseLeave={this.handleMouseHover}
+                onMouseEnter={this.handleMouseEnter}
+                onMouseLeave={this.handleMouseOut}
             >
                 { this.state.isHovering && this.renderMaskInfo(photo, maskStyle) }
 

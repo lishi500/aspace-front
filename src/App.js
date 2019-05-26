@@ -6,6 +6,9 @@ import {ProjectPageComponent} from "./Pages/project/ProjectPage";
 import {ProjectDetailPageComponent} from "./Pages/project/ProjectDetailPage";
 import {AboutPageComponent} from "./Pages/about/AboutPage";
 import './css/App.scss';
+import AdminPageComponent from "./Pages/admin/AdminPage";
+import AdminProjectPageComponent from "./Pages/admin/AdminProjectPage";
+import ContactPageComponent from "./Pages/contact/ContactPage";
 
 function App() {
   return (
@@ -13,10 +16,14 @@ function App() {
           <Router>
               <Route path="/" exact component={EnterPageComponent} />
               <Route path="/home" exact component={HomePageComponent} />
+              <Route path="/home/:type" exact component={HomePageComponent} />
               <Route path="/project" exact component={ProjectPageComponent} />
               <Route path="/projectDetail/:id" exact component={ProjectDetailPageComponent} />
-              <Route path="/about" exact component={AboutPageComponent} />
-              <Route path="/admin" exact component={AboutPageComponent} />
+              <Route path="/profile" exact component={AboutPageComponent} />
+              <Route path="/admin" exact component={AdminPageComponent} />
+              <Route path="/admin/project" exact component={AdminProjectPageComponent} />
+              <Route path="/contact" exact component={ContactPageComponent} />
+
           </Router>
       </div>
   );

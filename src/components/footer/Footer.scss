@@ -1,8 +1,43 @@
+@import "../../css/Common";
+
+.footer {
+  margin-top: 50px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background: $gray;
+}
+.footerLogo {
+  margin-bottom: 15px;
+}
+.footerLogo > img {
+  width: 120px;
+  height: auto;
+}
+.footerLinks {
+  display: flex;
+  flex-flow: row;
+  width: 200px;
+  justify-content: space-around;
+  margin-bottom: 20px;
+
+}
+.footerLinkIcon {
+}
+.footerLinkIcon > img {
+  width: 30px;
+  height: 30px;
+}
+
 .footerCopyRight {
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  font-size: 10px;
 }
 .footerCopyRight > div {
   margin-bottom: 10px;

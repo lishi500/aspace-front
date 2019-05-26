@@ -1,0 +1,94 @@
+.adminProject {
+  width: 1200px;
+  margin: 50px auto;
+  display: flex;
+  text-align: left;
+}
+.addProject {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.addButton {
+  margin-top: 10px;
+}
+.errorMessage {
+  height: 30px;
+}
+.newProject {
+  width: 450px;
+  //display: flex;
+  //flex-flow: column;
+  //flex-wrap: wrap;
+  //justify-content: flex-start;
+  //align-items: flex-start;
+}
+.dropArea {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  border: 1px solid #AAA;
+  color: #999;
+  padding: 10px;
+}
+
+.allProjectItemTitle{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.allProjectItemList {
+  width: 1200px;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+}
+.projectItem{
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: #E2FCFC;
+  border-radius: 10px;
+}
+.projectItemHeader {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: bold;
+  align-items: center;
+  border-bottom: 1px solid #ccc ;
+  padding-bottom: 10px;
+}
+.projectItemTitle {
+  display: flex;
+}
+.projectItemName {
+  text-transform: uppercase;
+}
+.projectItemType {
+  text-transform: capitalize;
+  margin-left: 50px;
+}
+.projectItemInfo {
+  font-size: 16px;
+}
+.projectItemBtn {
+  margin-left: 30px;
+}
+.projectItemImageList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.projectItemImage {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}

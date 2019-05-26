@@ -14,7 +14,7 @@ export function EnterPageComponent(props) {
                 </div>
                 <Image
                     className="enterImage"
-                    name='enter.png'
+                    name='enter.jpg'
                 />
             </div>
             <div className="enterLogo">

@@ -12,7 +12,8 @@ export function ImageComponent(props) {
         order,
         className,
         isUploadedImage,
-        onImageLoadCallback
+        onImageLoadCallback,
+        onClickCallback
     } = props;
 
     const baseUrl = isUploadedImage ? uploadUrl : imageUrl;
@@ -37,6 +38,13 @@ export function ImageComponent(props) {
         }
     };
 
+    const onImageClick = () => {
+        console.log('adadada');
+        if(onClickCallback) {
+            onClickCallback();
+        }
+    };
+
     return (
         <img
             className={className}
@@ -44,6 +52,7 @@ export function ImageComponent(props) {
             alt=""
             onLoad={onImageLoad}
             style={innerStyle}
+            onClick={() => onImageClick()}
         />
     );
 }
@@ -56,7 +65,8 @@ ImageComponent.propTypes = {
     order: PropTypes.number,
     className: PropTypes.string,
     isUploadedImage: PropTypes.bool,
-    onImageLoadCallback: PropTypes.func
+    onImageLoadCallback: PropTypes.func,
+    onClickCallback: PropTypes.func
 };
 
 ImageComponent.defaultProps = {

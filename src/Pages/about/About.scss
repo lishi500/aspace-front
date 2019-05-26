@@ -1,0 +1,44 @@
+@import "../../css/Common";
+
+.aboutPage {
+  @include responsiveWidth;
+  text-align: center;
+  @include md {
+    font-size: 14px;
+  }
+}
+
+.companyDescription{
+  margin-bottom: 100px;
+
+}
+
+.staffList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.staff {
+  width: 40%;
+  margin-bottom: 40px;
+  @include md {
+    width: 100%;
+    margin-bottom: 50px;
+
+  }
+}
+
+.staffPhoto {
+  margin-bottom: 30px;
+}
+
+.staffName {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.staffPosition{
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}

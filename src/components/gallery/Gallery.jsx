@@ -5,6 +5,7 @@ import Photo, { photoPropType } from './Photo';
 import { computeColumnLayout } from './layouts/columns';
 import { computeRowLayout } from './layouts/justified';
 import { findIdealNodeSearch } from './utils/findIdealNodeSearch';
+import {getContainerWidth, getHomeImageWidth} from '../../AppUtil'
 
 class Gallery extends React.Component {
   state = {
@@ -16,12 +17,18 @@ class Gallery extends React.Component {
     this.observer = new ResizeObserver(entries => {
       // only do something if width changes
       const newWidth = entries[0].contentRect.width;
+      console.log('new width', newWidth, entries);
       if (this.state.containerWidth !== newWidth) {
         // put in an animation frame to stop "benign errors" from
         // ResizObserver https://stackoverflow.com/questions/49384120/resizeobserver-loop-limit-exceeded
-        this.animationFrameID = window.requestAnimationFrame(() => {
-          this.setState({ containerWidth: Math.floor(newWidth) });
-        });
+        //   if (this.state.containerWidth < newWidth && this.state.containerWidth > getContainerWidth()) {
+        //       this.setState({ containerWidth: getHomeImageWidth() });
+        //   } else {
+        //       this.animationFrameID = window.requestAnimationFrame(() => {
+        //           this.setState({ containerWidth: Math.floor(newWidth) });
+        //       });
+        // }
+          this.setState({ containerWidth:  getHomeImageWidth() });
       }
     });
     this.observer.observe(this._gallery);
@@ -81,8 +88,8 @@ class Gallery extends React.Component {
       if (columns === undefined) {
         columns = 1;
         if (containerWidth >= 500) columns = 1;
-        if (containerWidth >= 900) columns = 1;
-        if (containerWidth >= 1500) columns = 2;
+        if (containerWidth >= 900) columns = 2;
+        if (containerWidth >= 1500) columns = 3;
       }
       galleryStyle = { position: 'relative' };
       thumbs = computeColumnLayout({ containerWidth: width, columns, margin, photos });
