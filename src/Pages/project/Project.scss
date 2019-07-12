@@ -1,7 +1,7 @@
 @import "../../css/Common";
 
 .projectDetail {
-  width: $projectWidth;
+  @include responsiveWidth3;
   margin: 50px auto 100px;
 }
 .projectFrontImage {
@@ -17,21 +17,32 @@
 }
 .projectName {
   text-align: center;
-  font-size: 36px;
+  font-size: 24px;
   margin-bottom: 50px;
 }
 .projectDescription {
-  font-size: 18px;
+  font-size: 16px;
   word-spacing: 1px;
+}
+.projectDescription:first-letter {
+  font-size: 28px;
+  text-transform: uppercase;
 }
 .projectImages {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 .projectImageFrame {
   margin-bottom: 30px;
+  margin-left: 10px;
 }
 .projectImage {
   object-fit: cover;
+}
+
+// ----\
+.projectImageContainer {
+  width: 70%;
+  margin: 0 auto;
 }

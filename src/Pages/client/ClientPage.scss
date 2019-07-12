@@ -1,0 +1,10 @@
+@import "../../css/Common";
+
+.clientPage {
+  width: $projectWidth;
+  margin: 50px auto 100px;
+
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}

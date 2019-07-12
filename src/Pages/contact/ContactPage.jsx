@@ -21,7 +21,7 @@ export function ContactPageComponent(props) {
                         PROJECT ENQUIRIES
                     </div>
                     <div>For project enquiries</div>
-                    <a href="mailto:name@email.com">kai@aspacedesign.com.au</a>
+                    <a href="mailto:kai@aspacedesign.com.au">kai@aspacedesign.com.au</a>
                     <a href="tel:0431742640">0431 742 640</a>
                 </div>
             </div>

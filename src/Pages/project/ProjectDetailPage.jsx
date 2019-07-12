@@ -1,13 +1,16 @@
 import React, {Fragment} from 'react';
 import Header from "../../components/header/Header";
 import Image from "../../components/image/Image";
+import Carousel, { Modal, ModalGateway } from "react-images";
 import "./Project.scss"
-import {projectDetail, projectWidth} from "../../constants";
+import {projectDetail, projectWidth, uploadUrl} from "../../constants";
 import FramedImage from "../../components/image/FramedImage";
 import Footer from "../../components/footer/Footer";
-import {getApiUrlWithParam} from "../../AppUtil";
+import {getApiUrlWithParam, getImageUploadUrl} from "../../AppUtil";
 import axios from "axios";
 import {PROJECT_TYPE} from "../admin/AdminProjectPage";
+import Photo from "../../components/image/Photo";
+import Gallery from "react-photo-gallery";
 
 export class ProjectDetailPageComponent extends React.Component{
 
@@ -18,13 +21,32 @@ export class ProjectDetailPageComponent extends React.Component{
             projectWidth: this.getProjectWidth(),
             projectId: props.match.params.id,
             currentProject: {},
-            canNotFind: false
+            canNotFind: false,
+            currentImage: 0,
+            isViewerOpen: false
         };
 
         this.loadProject = this.loadProject.bind(this);
         this.setCurrentProject = this.setCurrentProject.bind(this);
         this.renderPageDetail = this.renderPageDetail.bind(this);
+        this.openLightbox = this.openLightbox.bind(this);
+        this.closeLightbox = this.closeLightbox.bind(this);
     }
+
+    // openLightbox(index) {
+    //     this.setState({currentImage: index});
+    //     this.setState({isViewerOpen: true});
+    // }
+    openLightbox(e1,  {index}) {
+        this.setState({currentImage: index + 1});
+        this.setState({isViewerOpen: true});
+    };
+
+    closeLightbox() {
+        this.setState({currentImage: 0});
+        this.setState({isViewerOpen: false});
+    };
+
     getProjectWidth() {
         return window.innerWidth - 400;
     }
@@ -72,12 +94,44 @@ export class ProjectDetailPageComponent extends React.Component{
         console.log('current project', current);
     }
 
+    mapImage(image) {
+        const url = getImageUploadUrl(image.path);
+
+        return {
+            src: url,
+            width: Math.floor(parseInt(image.width) /100),
+            height: Math.floor(parseInt(image.height) /100),
+        }
+    }
+
+    renderImages2(images) {
+        const filteredImage = images.filter((image) => { return image.isFront === "0" });
+        const mappedImages = filteredImage.map(image => this.mapImage(image));
+
+        return (
+           <React.Fragment>
+               {
+                   mappedImages && mappedImages.length > 0 &&
+                   <Gallery
+                       photos={mappedImages}
+                       columns={2}
+                       limitNodeSearch={2}
+                       onClick={this.openLightbox}
+                       // targetRowHeight={MAX_HEIGHT}
+                       margin={7}
+                       // direction={"row"}
+                   />
+               }
+           </React.Fragment>
+        );
+    }
+
     renderImages(images) {
         const filteredImage = images.filter((image) => { return image.isFront === "0" });
 
         const frameWidth = (this.state.projectWidth - 40) / 2;
         const frameHeight = 0.75 * frameWidth;
-        const imageList = filteredImage.map(image => (
+        const imageList = filteredImage.map((image, index) => (
             <FramedImage
                 classNames="projectImageFrame"
                 isUploadedImage
@@ -86,6 +140,8 @@ export class ProjectDetailPageComponent extends React.Component{
                 frameHeight={frameHeight}
                 width={frameWidth}
                 height={frameHeight}
+                onClickCallback={this.openLightbox}
+                index={index}
             />
         ));
 
@@ -95,6 +151,22 @@ export class ProjectDetailPageComponent extends React.Component{
             </React.Fragment>
         )
     };
+
+    renderLightBox(images) {
+        const { currentImage, isViewerOpen } = this.state;
+        return (
+            <ModalGateway>
+                {isViewerOpen ? (
+                    <Modal onClose={this.closeLightbox}>
+                        <Carousel
+                            currentIndex={currentImage}
+                            views={images.map(x => ({ source: `${uploadUrl}${x.path}` }))}
+                        />
+                    </Modal>
+                ) : null}
+            </ModalGateway>
+        );
+    }
 
     renderPageDetail(projectDetails) {
         const { name, description, type, images } = this.state.currentProject;
@@ -125,8 +197,9 @@ export class ProjectDetailPageComponent extends React.Component{
                             {description}
                         </div>
                     </div>
-                    <div className="projectImages">
-                        {images && this.renderImages(images)}
+                    <div>
+                        {images && this.renderImages2(images)}
+                        { this.state.isViewerOpen && images && this.renderLightBox(images) }
                     </div>
                 </div>
             </Fragment>
@@ -134,9 +207,11 @@ export class ProjectDetailPageComponent extends React.Component{
     };
 
     render() {
+        const zIndex = this.state.isViewerOpen ? 0 : 9999;
+
         return (
             <React.Fragment>
-                <Header/>
+                <Header zIndex={zIndex} />
                 {this.state.currentProject && this.renderPageDetail()}
                 <Footer/>
             </React.Fragment>

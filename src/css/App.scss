@@ -1,5 +1,10 @@
 @import "Common";
 
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap');
+
+
 @font-face {
   font-family: "didot";
   src: url("./Didot.woff") format("woff");
@@ -10,7 +15,9 @@ $aspace-font: "didot", "Times New Roman", Times, serif;
 
 .App {
   text-align: center;
-  font-family: $aspace-font;
+  //font-family: $aspace-font;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
 }
 
 .App-logo {

@@ -1,25 +1,25 @@
 import React from 'react';
 import Header from "../../components/header/Header";
-import {getImageFrameWidth} from "../../AppUtil";
+import {getApiUrl, getImageFrameWidth} from "../../AppUtil";
 import {staffList} from "../../constants";
 import Footer from "../../components/footer/Footer";
 import './About.scss';
 import ImageComponent from "../../components/image/Image";
+import axios from "axios";
 
 function Staff(props) {
-    const {image, fName, lName, position, info} = props;
+    const {image, name, position, info} = props;
 
     return (
         <div className='staff'>
             <div className='staffPhoto'>
                 <ImageComponent
                     name={image.path}
-                    height={450}
                     isUploadedImage
                 />
             </div>
             <div className='staffName'>
-                {`${fName} ${lName}`}
+                {name}
             </div>
             <div className='staffPosition'>
                 {position}
@@ -31,10 +31,33 @@ function Staff(props) {
     );
 }
 
-export function AboutPageComponent(props) {
+export class AboutPageComponent extends React.Component{
+    constructor(props) {
+        super(props);
 
-    const renderStaffs = () => {
-        const staffs = staffList;
+        this.state = {
+            allStaff: null
+        }
+    }
+
+    componentDidMount() {
+        this.loadAllStaff();
+    }
+
+    loadAllStaff() {
+        const req = getApiUrl('getAllStaff');
+        axios.get(req)
+            .then((response) => {
+                console.log('load all staff', response);
+                if (response && response.data) {
+                    this.setState({allStaff: response.data});
+                }
+            });
+    }
+
+
+     renderStaffs() {
+        const staffs = this.state.allStaff;
         const list = staffs.map(staff => {
             return (
                 <Staff
@@ -46,21 +69,20 @@ export function AboutPageComponent(props) {
         return list;
     };
 
-    return (
-        <React.Fragment>
-            <Header />
-            <div className='aboutPage'>
-                <div className='companyDescription'>
-                    We have worked through all sectors including retail, hospitality, residential, and we understand the parameters, process and requirements involved. Our strategy is developed through the understanding of each individual business in order to offer individuality to each project.
-                    We are able to provide a multi-faceted service addressing brand identity, signage, menus POS, packaging, uniforms, and all associated collateral to make your brand stand out. We believe that a cohesive approach produces the best impression of your business by threading the aesthetic and identity through all facets of the rollout.
+    render() {
+        return (
+            <React.Fragment>
+                <Header />
+                <div className='aboutPage'>
+                    <div className="staffList">
+                        {this.state.allStaff && this.renderStaffs()}
+                    </div>
                 </div>
-                <div className="staffList">
-                    {renderStaffs()}
-                </div>
-            </div>
-            <Footer />
-        </React.Fragment>
-    );
+                <Footer isAbout />
+            </React.Fragment>
+        );
+    }
+
 }
 
 export default AboutPageComponent;

@@ -15,17 +15,29 @@ export const getApiUrlWithParam = (action, params) => {
     return (`${apiUrl}${query}`);
 };
 
-export const getHomeImageWidth = () => {
-    if (window.innerWidth >= 1200) {
+export const getHomeImageWidth = (newWidth) => {
+    if (newWidth >= 1200) {
         return 1122;
-    } else if  (window.innerWidth >= 960) {
+    } else if  (newWidth >= 960) {
         return 900;
-    } else if (window.innerWidth >= 768) {
+    } else if (newWidth >= 768) {
         return 700;
     } else {
         return 460;
     }
 };
+
+// export const getHomeImageWidth = () => {
+//     if (window.innerWidth >= 1200) {
+//         return 1122;
+//     } else if  (window.innerWidth >= 960) {
+//         return 900;
+//     } else if (window.innerWidth >= 768) {
+//         return 700;
+//     } else {
+//         return 460;
+//     }
+// };
 
 export const getContainerWidth = () => {
     if (window.innerWidth >= 1200) {

@@ -34,6 +34,7 @@ export class AdminProjectPageComponent extends React.Component{
             currentProject: emptyProject,
             allProject: []
         };
+        axios.defaults.withCredentials = true;
 
         this.onAddProjectClick = this.onAddProjectClick.bind(this);
         this.onNewProjectSaveClick = this.onNewProjectSaveClick.bind(this);

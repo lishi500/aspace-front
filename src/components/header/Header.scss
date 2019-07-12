@@ -1,17 +1,54 @@
 @import "../../css/Common";
 
 .header {
+  height: 160px;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-flow: column;
 }
 
+.headerPlaceholder {
+  height: 160px;
+  width: 100%;
+  background: white;
+}
+
+.shrinked {
+  animation: shrink-logo ease-in-out 0.4s both;
+  height: 55px;
+  top: 0;
+  left: 0;
+  position: fixed;
+  flex-flow: row;
+  justify-content: space-between;
+  .headerBrand {
+    display: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+  }
+  .pageLinks{
+    margin-right: 50px;
+  }
+}
+.z-up {
+  z-index: 9999;
+}
+.z-down {
+  z-index: 0;
+}
+
+@keyframes shrink-logo {
+  100% { margin-top: 0;}
+}
+
 .headerBrand {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 20px;
+  margin-left: 50px;
   @include md {
-    margin-top: 15px;
+    margin-top: 25px;
     margin-bottom: 15px;
   }
   @include sm {
@@ -29,15 +66,35 @@
     height: 20px;
   }
 }
+.headerLinks {
+  background: rgba(225, 225, 225, 0.75);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .pageLinks {
   display: flex;
   justify-content: space-evenly;
+  margin-left: 50px;
 }
+.socialLinks {
+  margin-right: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 200px;
+  @include sm {
+    display: none;
+  }
+}
+
 .linkItem {
-  font-size: 14px;
+  font-size: 18px;
   text-decoration: none;
   color: black;
-  margin-left: 15px;
+  margin-right: 15px;
+
   @include md {
     font-size: 12px;
   }

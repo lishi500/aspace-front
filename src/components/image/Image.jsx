@@ -13,7 +13,8 @@ export function ImageComponent(props) {
         className,
         isUploadedImage,
         onImageLoadCallback,
-        onClickCallback
+        onClickCallback,
+        index
     } = props;
 
     const baseUrl = isUploadedImage ? uploadUrl : imageUrl;
@@ -41,7 +42,7 @@ export function ImageComponent(props) {
     const onImageClick = () => {
         console.log('adadada');
         if(onClickCallback) {
-            onClickCallback();
+            onClickCallback(index);
         }
     };
 
@@ -66,11 +67,13 @@ ImageComponent.propTypes = {
     className: PropTypes.string,
     isUploadedImage: PropTypes.bool,
     onImageLoadCallback: PropTypes.func,
-    onClickCallback: PropTypes.func
+    onClickCallback: PropTypes.func,
+    index: PropTypes.number
 };
 
 ImageComponent.defaultProps = {
-    isUploadedImage: false
+    isUploadedImage: false,
+    index: 0
 };
 
 export default ImageComponent;

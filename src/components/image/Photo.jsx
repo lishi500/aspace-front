@@ -18,9 +18,7 @@ export class PhotoComponent extends React.Component {
             this.imgStyle.top = top;
         }
 
-        this.state = {
-            isHovering: false
-        };
+
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
 
@@ -33,10 +31,13 @@ export class PhotoComponent extends React.Component {
     };
 
     handleMouseEnter() {
-        this.setState({isHovering: true});
+        this.props.photo.mouseEnterCallback(this.props.photo.projectId);
+        // this.setState({isHovering: true});
     }
+
     handleMouseOut() {
-        this.setState({isHovering: false});
+        this.props.photo.mouseLeaveCallback(this.props.photo.projectId);
+        // this.setState({isHovering: false});
     }
 
 
@@ -68,21 +69,23 @@ export class PhotoComponent extends React.Component {
     render() {
         const { onClick, photo } = this.props;
         const maskStyle = {width: photo.width, height: photo.height};
+        const projectUrl = getProjectUrlRelative(photo.projectId);
         return (
             <div
                 className="photoContainer"
                 onMouseEnter={this.handleMouseEnter}
                 onMouseLeave={this.handleMouseOut}
             >
-                { this.state.isHovering && this.renderMaskInfo(photo, maskStyle) }
-
-                <img
-                    className="photoImage"
-                    style={this.onClick ? { ...this.imgStyle, ...imgWithClick } : this.imgStyle}
-                    {...photo}
-                    onClick={onClick ? this.handleClick : null}
-                    alt=""
-                />
+                { photo.isHovering && this.renderMaskInfo(photo, maskStyle) }
+                <Link to={projectUrl}>
+                    <img
+                        className="photoImage"
+                        style={this.onClick ? { ...this.imgStyle, ...imgWithClick } : this.imgStyle}
+                        {...photo}
+                        onClick={onClick ? this.handleClick : null}
+                        alt=""
+                    />
+                </Link>
             </div>
         );
     }
@@ -98,6 +101,8 @@ export const photoPropType = PropTypes.shape({
   title: PropTypes.string,
   srcSet: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   sizes: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+    mouseEnterCallback: PropTypes.func,
+    mouseLeaveCallback: PropTypes.func
 });
 
 PhotoComponent.propTypes = {

@@ -25,12 +25,12 @@ const SortableItem = SortableElement(({image, isUploadedImage, maxHeight, maxWid
 
 const SortableList = SortableContainer(props => {
     const {images, isUploadedImage, maxHeight, maxWidth, removable, removeCallback} = props;
-
+    console.log('images', images);
     return (
         <div className='sortableImageContainer'>
             {images.map((image, index) => (
                 <SortableItem
-                    key={`item-${index}`}
+                    key={`item-${index}`}sortableImageContainer
                     index={index}
                     image={image}
                     isUploadedImage={isUploadedImage}

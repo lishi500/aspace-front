@@ -9,6 +9,8 @@ import './css/App.scss';
 import AdminPageComponent from "./Pages/admin/AdminPage";
 import AdminProjectPageComponent from "./Pages/admin/AdminProjectPage";
 import ContactPageComponent from "./Pages/contact/ContactPage";
+import ClientPageComponent from "./Pages/client/ClientPage";
+import {AdminStaffPageComponent} from "./Pages/admin/AdminStaffPage";
 
 function App() {
   return (
@@ -22,8 +24,9 @@ function App() {
               <Route path="/profile" exact component={AboutPageComponent} />
               <Route path="/admin" exact component={AdminPageComponent} />
               <Route path="/admin/project" exact component={AdminProjectPageComponent} />
+              <Route path="/admin/staff" exact component={AdminStaffPageComponent} />
               <Route path="/contact" exact component={ContactPageComponent} />
-
+              <Route path="/client" exact component={ClientPageComponent} />
           </Router>
       </div>
   );

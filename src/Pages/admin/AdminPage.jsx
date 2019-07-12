@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import {Link} from "react-router-dom";
 import './Admin.scss';
 import axios from 'axios';
-import {getApiUrl, getApiUrlWithParam} from "../../AppUtil";
+import {getApiPostWithPayloadUrl, getApiUrl, getApiUrlWithParam} from "../../AppUtil";
 
 export class AdminPageComponent extends React.Component{
     constructor(props) {
@@ -23,11 +23,11 @@ export class AdminPageComponent extends React.Component{
 
     renderAdminOption() {
         return (
-            <div>
-                <Link to="/admin/project" className="linkItem">
+            <div className="adminOptions">
+                <Link to="/admin/project" className="adminlinkItem">
                     Manage Project
                 </Link>
-                <Link to="/admin/staff" className="linkItem">
+                <Link to="/admin/staff" className="adminlinkItem">
                     Manage Staff
                 </Link>
             </div>
@@ -38,16 +38,22 @@ export class AdminPageComponent extends React.Component{
         console.log(getApiUrl('login'));
         console.log(getApiUrlWithParam('login',{username: username, password: password}));
         console.log('axios', axios);
+
         axios.post(
-            getApiUrl('login'),
+            getApiPostWithPayloadUrl(),
             {
+                action: 'login',
                 username: username,
                 password: password
             }
         )
             .then(res => {
                 const persons = res.data;
-                this.setState({ persons });
+                if ( res.data.loginToken) {
+                    Cookies.set("loginToken", res.data.loginToken );
+                    console.log(Cookies.get("loginToken"));
+                    this.setState({isLogin: true});
+                }
         })
     }
 

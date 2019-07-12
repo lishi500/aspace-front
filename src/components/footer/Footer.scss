@@ -11,25 +11,40 @@
   background: $gray;
 }
 .footerLogo {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 .footerLogo > img {
-  width: 120px;
+  width: 150px;
   height: auto;
+}
+.footerAboutContact {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
 }
 .footerLinks {
   display: flex;
   flex-flow: row;
-  width: 200px;
+  width: 230px;
   justify-content: space-around;
   margin-bottom: 20px;
-
 }
+
+.footerEmailLinks {
+  color: #000;
+  font-weight: bold;
+}
+.footerMobile {
+  font-weight: bold;
+}
+
 .footerLinkIcon {
 }
 .footerLinkIcon > img {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
 }
 
 .footerCopyRight {

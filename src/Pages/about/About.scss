@@ -1,16 +1,11 @@
 @import "../../css/Common";
 
 .aboutPage {
-  @include responsiveWidth;
+  @include responsiveWidth2;
   text-align: center;
   @include md {
     font-size: 14px;
   }
-}
-
-.companyDescription{
-  margin-bottom: 100px;
-
 }
 
 .staffList {
@@ -21,24 +16,34 @@
 
 .staff {
   width: 40%;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
   @include md {
     width: 100%;
-    margin-bottom: 50px;
-
+    margin-bottom: 150px;
   }
 }
 
 .staffPhoto {
-  margin-bottom: 30px;
+  margin-bottom: 150px;
+  margin-left: 30px;
 }
 
 .staffName {
-  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 .staffPosition{
-  margin-bottom: 40px;
-  text-transform: uppercase;
+  font-size: 24px;
+  margin-bottom: 80px;
+}
+.staffinfo {
+  font-size: 20px;
+  text-align: justify;
+  white-space: pre-line;
 }
