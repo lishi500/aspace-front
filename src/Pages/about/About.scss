@@ -3,6 +3,7 @@
 .aboutPage {
   @include responsiveWidth2;
   text-align: center;
+  margin-top: 100px;
   @include md {
     font-size: 14px;
   }
@@ -14,8 +15,26 @@
   justify-content: space-between;
 }
 
-.staff {
-  width: 40%;
+.staffLeft {
+  width: 45%;
+  margin-bottom: 80px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  @include md {
+    width: 100%;
+    margin-bottom: 150px;
+  }
+}
+
+
+.staffPhoto {
+  margin-bottom: 150px;
+  margin-left: 30px;
+}
+
+.staffRight {
+  width: 45%;
   margin-bottom: 80px;
   display: flex;
   flex-flow: column;
@@ -24,11 +43,9 @@
     width: 100%;
     margin-bottom: 150px;
   }
-}
-
-.staffPhoto {
-  margin-bottom: 150px;
-  margin-left: 30px;
+  .staffPhoto {
+    margin-left: 0;
+  }
 }
 
 .staffName {
@@ -46,4 +63,28 @@
   font-size: 20px;
   text-align: justify;
   white-space: pre-line;
+}
+
+.aboutPageContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.aboutPageLeft {
+  margin-right: 78px;
+  margin-bottom: 50px;
+}
+.aboutPageRight {
+  text-align: left;
+  font-size: 21px;
+  width: 50%;
+
+  @include lg {
+    width: auto;
+  }
+  @include sm {
+    width: 100%;
+  }
+}
+.aboutTitle {
+  font-size: 24px;
 }

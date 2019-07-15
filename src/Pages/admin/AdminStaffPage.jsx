@@ -9,6 +9,7 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios';
 import SortableImageList from "../../components/image/SortableImageList";
 import FramedImage from "../../components/image/FramedImage";
+import Cookies from "js-cookie";
 
 const emptyStaff = {
     id: 0,
@@ -21,6 +22,11 @@ const emptyStaff = {
 export class AdminStaffPageComponent extends React.Component {
     constructor(props) {
         super(props);
+
+        const loginToken = Cookies.get('loginToken');
+        if (!loginToken) {
+            this.props.history.push(`/admin`);
+        }
 
         this.state = {
             isEditing: false,

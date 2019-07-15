@@ -9,12 +9,9 @@ export function ClientPageComponent() {
         <React.Fragment>
             <Header/>
             <div className="clientPage">
-                <div className="enterFront">
-                    <Image
-                        className="enterImage"
-                        name='client-logos-webpage.jpg'
-                    />
-                </div>
+                <Image
+                    name='client-logos-webpage.png'
+                />
             </div>
             <Footer/>
         </React.Fragment>

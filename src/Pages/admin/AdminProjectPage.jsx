@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import arrayMove from 'array-move';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
@@ -10,6 +10,7 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios';
 import SortableImageList from "../../components/image/SortableImageList";
 import FramedImage from "../../components/image/FramedImage";
+import Cookies from "js-cookie";
 
 export const PROJECT_TYPE = {
     residential: 'residential',
@@ -27,6 +28,11 @@ const emptyProject = {
 export class AdminProjectPageComponent extends React.Component{
     constructor(props) {
         super(props);
+
+        const loginToken = Cookies.get('loginToken');
+        if (!loginToken) {
+            this.props.history.push(`/admin`);
+        }
 
         this.state = {
             isEditing: false,

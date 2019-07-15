@@ -20,9 +20,13 @@
   font-size: 24px;
   margin-bottom: 50px;
 }
+.projectNameAddress {
+  font-size: 20px;
+}
 .projectDescription {
   font-size: 16px;
   word-spacing: 1px;
+  white-space: pre-line;
 }
 .projectDescription:first-letter {
   font-size: 28px;

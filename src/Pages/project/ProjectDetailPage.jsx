@@ -167,6 +167,14 @@ export class ProjectDetailPageComponent extends React.Component{
             </ModalGateway>
         );
     }
+    renderName(name) {
+        if (name && name.indexOf("@") > -1) {
+            const projectName = name.substr(0, name.indexOf("@"));
+            const projectAddress = name.substr(name.indexOf("@"), name.length);
+            return (<div>{projectName} <span className="projectNameAddress">{projectAddress}</span></div>);
+        }
+        return name;
+    }
 
     renderPageDetail(projectDetails) {
         const { name, description, type, images } = this.state.currentProject;
@@ -191,7 +199,7 @@ export class ProjectDetailPageComponent extends React.Component{
                     </div>
                     <div className="projectInfo">
                         <div className="projectName">
-                            {name}
+                            { this.renderName(name) }
                         </div>
                         <div className="projectDescription">
                             {description}

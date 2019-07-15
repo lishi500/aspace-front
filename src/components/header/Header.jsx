@@ -53,6 +53,7 @@ export class HeaderComponent extends React.Component{
                     <div className="pageLinks">
                         {this.renderLinkItems("/home/residential", "RESIDENTIAL")}
                         {this.renderLinkItems("/home/commercial", "COMMERCIAL")}
+                        {this.renderLinkItems("/about", "ABOUT")}
                         {this.renderLinkItems("/profile", "PROFILE")}
                         {this.renderLinkItems("/contact", "CONTACT")}
                         {this.renderLinkItems("/client", "CLIENT")}
@@ -61,7 +62,7 @@ export class HeaderComponent extends React.Component{
                         { LinkIcon("instagram.svg", "https://www.instagram.com/a_space_design/") }
                         { LinkIcon("facebook.svg", "https://www.facebook.com/aspaceinteriorgraphicdesign?fref=ts") }
                         { LinkIcon("linkedin.svg", "https://www.linkedin.com/in/kai-yu-b124ba28?authType=NAME_SEARCH&authToken=wzvu&locale=en_US&srchid=2370228741440468794370&srchindex=1&srchtotal=380&trk=vsrp_people_res_name&trkInfo=VSRPsearchId%3A2370228741440468794370%2CVSRPtargetId%3A96793790%2CVSRPcmpt%3Aprimary%2CVSRPnm%3Atrue%2CauthType%3ANAME_SEARCH") }
-                        { LinkIcon("pinterest.svg", "") }
+                        { LinkIcon("pinterest.svg", "https://www.pinterest.com.au/kai5621") }
                     </div>
                 </div>
 
