@@ -8,6 +8,7 @@ $border-gap: 100px;
   justify-content: flex-start;
   flex-wrap: wrap;
   @include responsiveWidth;
+  overflow: hidden;
 }
 
 .homeItemLarge {
@@ -16,4 +17,7 @@ $border-gap: 100px;
 .homeItemMiddle {
 }
 .homeItemSmall {
+}
+.react-photo-gallery--gallery {
+  width: 100%;
 }

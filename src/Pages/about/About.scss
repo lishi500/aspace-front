@@ -33,6 +33,11 @@
   margin-left: 30px;
 }
 
+.staffPhoto img{
+  max-width: 70vw;
+  height: auto;
+}
+
 .staffRight {
   width: 45%;
   margin-bottom: 80px;
@@ -49,18 +54,19 @@
 }
 
 .staffName {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 .staffPosition{
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 80px;
 }
 .staffinfo {
-  font-size: 20px;
+  width: 100%;
+  font-size: 16px;
   text-align: justify;
   white-space: pre-line;
 }
@@ -75,7 +81,7 @@
 }
 .aboutPageRight {
   text-align: left;
-  font-size: 21px;
+  font-size: 16px;
   width: 50%;
 
   @include lg {
@@ -86,5 +92,5 @@
   }
 }
 .aboutTitle {
-  font-size: 24px;
+  font-size: 20px;
 }

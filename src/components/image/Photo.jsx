@@ -6,42 +6,35 @@ import {getProjectUrlRelative} from "../../AppUtil";
 
 const imgWithClick = { cursor: 'pointer' };
 
-export class PhotoComponent extends React.Component {
-    constructor(props) {
-        super(props);
+export function PhotoComponent(props) {
 
-        const { margin, direction, top, left } = props;
-        this.imgStyle = { display: 'block' };
-        if (direction === 'column') {
-            this.imgStyle.position = 'absolute';
-            this.imgStyle.left = left;
-            this.imgStyle.top = top;
-        }
-
-
-        this.handleMouseEnter = this.handleMouseEnter.bind(this);
-        this.handleMouseOut = this.handleMouseOut.bind(this);
-
+    const { index, onClick, photo, margin, direction, top, left, key } = props;
+    const imgStyle = { display: 'block' };
+    if (direction === 'column') {
+        imgStyle.position = 'absolute';
+        imgStyle.left = left;
+        imgStyle.top = top;
+        imgStyle.maxwidth = '70vw'
     }
 
 
-    handleClick(event) {
-        const { onClick, photo, index } = this.props;
+    const handleClick = (event) => {
+        const { onClick, photo, index } = props;
         onClick(event, { photo, index });
     };
 
-    handleMouseEnter() {
-        this.props.photo.mouseEnterCallback(this.props.photo.projectId);
+    const handleMouseEnter = () => {
+        props.photo.mouseEnterCallback(props.photo.projectId);
         // this.setState({isHovering: true});
-    }
+    };
 
-    handleMouseOut() {
-        this.props.photo.mouseLeaveCallback(this.props.photo.projectId);
+    const handleMouseOut = () => {
+        props.photo.mouseLeaveCallback(props.photo.projectId);
         // this.setState({isHovering: false});
-    }
+    };
 
 
-    renderMaskInfo(photo, maskStyle) {
+    const renderMaskInfo = (photo, maskStyle) => {
         const projectUrl = getProjectUrlRelative(photo.projectId);
         return (
             <React.Fragment >
@@ -64,63 +57,58 @@ export class PhotoComponent extends React.Component {
             </React.Fragment>
 
         );
-    }
+    };
 
-    render() {
-        const { onClick, photo } = this.props;
-        const maskStyle = {width: photo.width, height: photo.height};
-        const projectUrl = getProjectUrlRelative(photo.projectId);
-        return (
-            <div
-                className="photoContainer"
-                onMouseEnter={this.handleMouseEnter}
-                onMouseLeave={this.handleMouseOut}
-            >
-                { photo.isHovering && this.renderMaskInfo(photo, maskStyle) }
-                <Link to={projectUrl}>
-                    <img
-                        className="photoImage"
-                        style={this.onClick ? { ...this.imgStyle, ...imgWithClick } : this.imgStyle}
-                        {...photo}
-                        onClick={onClick ? this.handleClick : null}
-                        alt=""
-                    />
-                </Link>
-            </div>
-        );
-    }
+    const maskStyle = {width: photo.width, height: photo.height};
+    const projectUrl = getProjectUrlRelative(photo.projectId);
 
+    return (
+        <div
+            className="photoContainer"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseOut}
+        >
+            { photo.isHovering && renderMaskInfo(photo, maskStyle) }
+            <Link to={projectUrl}>
+                <img
+                    className="photoImage"
+                    key={key}
+                    style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
+                    {...photo}
+                    onClick={onClick ? handleClick : null}
+                />
+            </Link>
+        </div>
+    );
 };
 
 export const photoPropType = PropTypes.shape({
-  key: PropTypes.string,
-  src: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  alt: PropTypes.string,
-  title: PropTypes.string,
-  srcSet: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  sizes: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-    mouseEnterCallback: PropTypes.func,
-    mouseLeaveCallback: PropTypes.func
+    key: PropTypes.string,
+    src: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    alt: PropTypes.string,
+    title: PropTypes.string,
+    srcSet: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+    sizes: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
 });
 
 PhotoComponent.propTypes = {
-  index: PropTypes.number.isRequired,
-  onClick: PropTypes.func,
-  photo: photoPropType.isRequired,
-  margin: PropTypes.number,
-  top: props => {
-    if (props.direction === 'column' && typeof props.top !== 'number') {
-      return new Error('top is a required number when direction is set to `column`');
-    }
-  },
-  left: props => {
-    if (props.direction === 'column' && typeof props.left !== 'number') {
-      return new Error('left is a required number when direction is set to `column`');
-    }
-  },
-  direction: PropTypes.string,
+    index: PropTypes.number.isRequired,
+    onClick: PropTypes.func,
+    photo: photoPropType.isRequired,
+    margin: PropTypes.number,
+    top: props => {
+        if (props.direction === 'column' && typeof props.top !== 'number') {
+            return new Error('top is a required number when direction is set to `column`');
+        }
+    },
+    left: props => {
+        if (props.direction === 'column' && typeof props.left !== 'number') {
+            return new Error('left is a required number when direction is set to `column`');
+        }
+    },
+    direction: PropTypes.string,
 };
 
 export default PhotoComponent;

@@ -17,14 +17,14 @@
 }
 .projectName {
   text-align: center;
-  font-size: 24px;
+  font-size: 21px;
   margin-bottom: 50px;
 }
 .projectNameAddress {
-  font-size: 20px;
+  font-size: 17px;
 }
 .projectDescription {
-  font-size: 16px;
+  font-size: 14px;
   word-spacing: 1px;
   white-space: pre-line;
 }
@@ -49,4 +49,7 @@
 .projectImageContainer {
   width: 70%;
   margin: 0 auto;
+}
+.react-images__dialog {
+  width: 100%;
 }

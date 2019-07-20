@@ -4,7 +4,10 @@
 
 // uri for API calls
 const devBaseUrl = 'http://localhost/aspace';
-const baseUrl = devBaseUrl;
+const prodDevUrl = 'http://localhost';
+const prodDemoUrl = 'https://lis.sgedu.site';
+const productionUrl = 'http://www.aspacedesign.com.au';
+const baseUrl = prodDemoUrl;
 
 export var apiUrl = baseUrl + '/public/api/api.php';
 export const imageUrl = baseUrl + '/images/';
@@ -12,8 +15,8 @@ export const uploadUrl = baseUrl + '/upload/';
 export let projectWidth = window.innerWidth - 400;
 
 window.onresize = function(event) {
-    projectWidth = window.innerWidth - 400;
-    console.log(projectWidth);
+    // projectWidth = window.innerWidth - 400;
+    // console.log(projectWidth);
 };
 
 export const photosList = [

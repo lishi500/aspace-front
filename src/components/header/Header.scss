@@ -6,12 +6,19 @@
   display: flex;
   align-items: flex-start;
   flex-flow: column;
+
+  @include sm {
+    height: 130px;
+  }
 }
 
 .headerPlaceholder {
   height: 160px;
   width: 100%;
   background: white;
+  @include sm {
+    height: 130px;
+  }
 }
 
 .shrinked {
@@ -54,6 +61,7 @@
   @include sm {
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: 25px;
   }
 }
 .headerLogo {
@@ -73,11 +81,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include sm {
+     height: 45px;
+  }
 }
 .pageLinks {
   display: flex;
   justify-content: space-evenly;
   margin-left: 50px;
+  @include sm {
+    margin-left: 25px;
+  }
 }
 .socialLinks {
   margin-right: 50px;
@@ -99,6 +113,7 @@
     font-size: 12px;
   }
   @include sm {
-    font-size: 10px;
+    font-size: 9px;
+    margin-right: 10px;
   }
 }
