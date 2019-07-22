@@ -60,3 +60,11 @@
     font-size: 11px;
   }
 }
+
+.imageWrapper {
+  max-height: 450px;
+  overflow: hidden;
+}
+.innerImage img{
+  object-fit: cover;
+}

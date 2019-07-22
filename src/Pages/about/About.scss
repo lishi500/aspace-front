@@ -34,8 +34,14 @@
 }
 
 .staffPhoto img{
-  max-width: 70vw;
+  max-width: 25vw;
   height: auto;
+  @include md {
+    max-width: 35vw;
+  }
+  @include sm {
+    max-width: 60vw;
+  }
 }
 
 .staffRight {

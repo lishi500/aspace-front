@@ -61,7 +61,7 @@ export class AdminProjectPageComponent extends React.Component{
 
 
     onDrop(acceptedFiles){
-        console.log('onDrop', acceptedFiles);
+        // console.log('onDrop', acceptedFiles);
         const req = getApiUrlWithParam('uploadImage', {projectId: this.state.currentProject.projectId});
         const formData = new FormData();
 
@@ -70,7 +70,7 @@ export class AdminProjectPageComponent extends React.Component{
             formData.append(file.name, file);
         });
 
-        console.log('axios', axios);
+        // console.log('axios', axios);
         axios.post(req, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -171,13 +171,13 @@ export class AdminProjectPageComponent extends React.Component{
     }
 
     testFunc() {
-        console.log(this.state);
+        // console.log(this.state);
         this.loadProject(22);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('currentProject', this.state.currentProject);
+        // console.log('currentProject', this.state.currentProject);
         const req = getApiPostWithPayloadUrl();
 
         axios.post(
@@ -200,7 +200,7 @@ export class AdminProjectPageComponent extends React.Component{
         const req = getApiUrl('getAllProjectsWithImages');
         axios.get(req)
             .then((response) => {
-                console.log('all projects', response);
+                // console.log('all projects', response);
                 if (response && response.data) {
                     this.setState({allProject: response.data});
                 }
@@ -209,11 +209,11 @@ export class AdminProjectPageComponent extends React.Component{
 
     loadProject(projectId) {
         const url = getApiUrlWithParam('getProject', {projectId: projectId});
-        console.log('load project from ', url);
+        // console.log('load project from ', url);
         axios.get(
             url
         ).then(response => {
-            console.log('response', response);
+            // console.log('response', response);
             if (response && response.data && response.data.project) {
                 this.setCurrentProject(response.data.project, response.data.images);
             }
@@ -231,7 +231,7 @@ export class AdminProjectPageComponent extends React.Component{
         };
 
         this.setState({currentProject: current});
-        console.log('current project', current);
+        // console.log('current project', current);
     }
 
     updateStateImage(images) {
@@ -245,7 +245,7 @@ export class AdminProjectPageComponent extends React.Component{
         this.updateStateImage(newImages);
     }
     imageRemoveCallback(imageId) {
-        console.log('i got call back', imageId);
+        // console.log('i got call back', imageId);
         const req = getApiUrlWithParam('deleteImage', {imageId: imageId});
         axios.post(req).then(() => {
             const images =  this.state.currentProject.images.filter(function (image) {

@@ -49,7 +49,7 @@ export class ProfilePageComponent extends React.Component{
         const req = getApiUrl('getAllStaff');
         axios.get(req)
             .then((response) => {
-                console.log('load all staff', response);
+                // console.log('load all staff', response);
                 if (response && response.data) {
                     this.setState({allStaff: response.data});
                 }

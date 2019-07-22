@@ -14,6 +14,8 @@ export class HeaderComponent extends React.Component{
             isShow: true,
             isShrink: false
         };
+
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount() {
@@ -24,8 +26,14 @@ export class HeaderComponent extends React.Component{
         window.removeEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll = () => {
-        const scrollY = window.scrollY;
+    handleScroll() {
+        let scrollY;
+        if (window.scrollY === undefined) {
+            scrollY = window.pageYOffset;
+        } else {
+            scrollY = window.scrollY;
+        }
+
         if (scrollY > 50) {
             this.setState({isShrink: true});
         } else {
@@ -74,7 +82,8 @@ export class HeaderComponent extends React.Component{
         const { zIndex } = this.props;
         const { isShrink } = this.state;
 
-        const shrinkedHearderStyle = zIndex === 0 ? classnames("header", "shrinked", "z-down") : classnames("header", "shrinked", "z-up") ;
+        // const shrinkedHearderStyle = zIndex === 0 ? classnames("header", "shrinked", "z-down") : classnames("header", "shrinked", "z-up") ;
+        const shrinkedHearderStyle = zIndex === 0 ? "header shrinked z-down" : "header shrinked z-up" ;
 
         return (
             <React.Fragment>

@@ -67,3 +67,5 @@ export const getImageFrameWidth = () => {
     }
 };
 
+export const isMobile = window.innerWidth <= 575;
+export const isTablet = window.innerWidth <= 888;

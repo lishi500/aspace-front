@@ -6,8 +6,8 @@
 const devBaseUrl = 'http://localhost/aspace';
 const prodDevUrl = 'http://localhost';
 const prodDemoUrl = 'https://lis.sgedu.site';
-const productionUrl = 'http://www.aspacedesign.com.au';
-const baseUrl = prodDemoUrl;
+const productionUrl = 'https://www.aspacedesign.com.au';
+const baseUrl = productionUrl;
 
 export var apiUrl = baseUrl + '/public/api/api.php';
 export const imageUrl = baseUrl + '/images/';

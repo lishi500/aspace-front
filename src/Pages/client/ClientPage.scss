@@ -7,6 +7,10 @@
   display: flex;
   align-items: center;
   flex-flow: column;
+  height: auto;
+  @include sm {
+    width: 100%;
+  }
 }
 .clientPage img{
   width: 100%;

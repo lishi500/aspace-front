@@ -58,7 +58,7 @@ export class ProjectDetailPageComponent extends React.Component{
     componentDidMount() {
         this.updateDimensions();
         window.addEventListener("resize", this.updateDimensions.bind(this));
-        console.log('componentDidMount', this.state );
+        // console.log('componentDidMount', this.state );
         if (this.state.projectId) {
             this.loadProject(this.state.projectId);
         }
@@ -66,17 +66,16 @@ export class ProjectDetailPageComponent extends React.Component{
 
     loadProject(projectId) {
         const url = getApiUrlWithParam('getProject', {projectId: projectId});
-        console.log('load project from ', url);
+        // console.log('load project from ', url);
         axios.get(
             url
         ).then(response => {
-            console.log('response', response);
             if (response && response.data && response.data.project) {
                 this.setCurrentProject(response.data.project, response.data.images);
                 this.setState({canNotFind: false});
             }
         })
-        .catch((error) => { console.log('catch error', error);this.setState({canNotFind: true});});
+        .catch((error) => { this.setState({canNotFind: true});});
 
     }
 
@@ -91,7 +90,7 @@ export class ProjectDetailPageComponent extends React.Component{
         };
 
         this.setState({currentProject: current});
-        console.log('current project', current);
+        // console.log('current project', current);
     }
 
     mapImage(image) {
@@ -185,7 +184,7 @@ export class ProjectDetailPageComponent extends React.Component{
                 frontImage = frontImage[0];
             }
         }
-        console.log('render frontImage', frontImage);
+        // console.log('render frontImage', frontImage);
         return (
             <Fragment>
                 <div className="projectDetail">

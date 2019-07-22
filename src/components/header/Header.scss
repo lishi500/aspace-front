@@ -96,7 +96,7 @@
 .socialLinks {
   margin-right: 50px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 200px;
   @include sm {
     display: none;

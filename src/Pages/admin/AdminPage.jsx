@@ -35,9 +35,9 @@ export class AdminPageComponent extends React.Component{
     }
 
     login(username, password) {
-        console.log(getApiUrl('login'));
-        console.log(getApiUrlWithParam('login',{username: username, password: password}));
-        console.log('axios', axios);
+        // console.log(getApiUrl('login'));
+        // console.log(getApiUrlWithParam('login',{username: username, password: password}));
+        // console.log('axios', axios);
 
         axios.post(
             getApiPostWithPayloadUrl(),
@@ -51,7 +51,7 @@ export class AdminPageComponent extends React.Component{
                 const persons = res.data;
                 if ( res.data.loginToken) {
                     Cookies.set("loginToken", res.data.loginToken );
-                    console.log(Cookies.get("loginToken"));
+                    // console.log(Cookies.get("loginToken"));
                     this.setState({isLogin: true});
                 }
         })

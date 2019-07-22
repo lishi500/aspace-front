@@ -40,7 +40,7 @@ export function ImageComponent(props) {
     };
 
     const onImageClick = () => {
-        console.log('adadada');
+        // console.log('adadada');
         if(onClickCallback) {
             onClickCallback(index);
         }

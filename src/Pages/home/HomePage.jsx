@@ -3,7 +3,7 @@ import Header from "../../components/header/Header";
 import './HomePage.scss'
 // import Gallery from "../../components/gallery/Gallery";
 import Footer from "../../components/footer/Footer";
-import {getApiUrl, getImageUploadUrl} from "../../AppUtil";
+import {getApiUrl, getImageUploadUrl, isMobile, isTablet} from "../../AppUtil";
 import axios from "axios";
 import {PROJECT_TYPE} from "../admin/AdminProjectPage";
 import Gallery from "react-photo-gallery";
@@ -16,12 +16,13 @@ const MAX_HEIGHT = 450;
 export class HomePageComponent extends React.Component{
     constructor(props) {
         super(props);
-        // console.log('home type',  props.match.params.type);
+        // // console.log('home type',  props.match.params.type);
         this.state = {
             allProject: [],
             hoverProjectId: -1,
             maxDisplaySize: 3,
-            readyToExtendSize: true
+            readyToExtendSize: true,
+            isMobileOrTablet: isTablet
         };
         // readyToExtendSize = true;
         this.loadAllProject = this.loadAllProject.bind(this);
@@ -29,16 +30,19 @@ export class HomePageComponent extends React.Component{
         this.mouseEnterCallback = this.mouseEnterCallback.bind(this);
         this.mouseLeaveCallback = this.mouseLeaveCallback.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
+        this.updateDimensions = this.updateDimensions.bind(this);
+
     }
 
     componentDidMount() {
         this.loadAllProject();
         window.addEventListener('scroll', this.handleScroll);
-
+        window.addEventListener("resize", this.updateDimensions);
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener("resize", this.updateDimensions);
     }
 
     handleScroll() {
@@ -63,6 +67,11 @@ export class HomePageComponent extends React.Component{
         }
     };
 
+    updateDimensions() {
+        const isMobileOrTablet = window.innerWidth < 888;
+        this.setState({isMobileOrTablet});
+    }
+
     updateType() {
 
     }
@@ -71,7 +80,7 @@ export class HomePageComponent extends React.Component{
         const req = getApiUrl('getAllProjectsWithFrontImage');
         axios.get(req)
             .then((response) => {
-                // console.log('all projects', response);
+                console.log('all projects', response);
                 if (response && response.data) {
                     this.setDisplayProject(response.data)
                 }
@@ -102,14 +111,16 @@ export class HomePageComponent extends React.Component{
             const p = allProject[i];
 
             if (!p.project || p.image || p.images.length <= 1) {
-                return null;
+                continue;
             }
 
             const image1 = p.images[0];
             const image2 = p.images[1];
             const id = parseInt(p.project.id);
             imageList.push(this.getImageForPhoto(p, image1, true, id === this.state.hoverProjectId));
-            imageList.push(this.getImageForPhoto(p, image2, false, false));
+            if (!this.state.isMobileOrTablet) {
+                imageList.push(this.getImageForPhoto(p, image2, false, false));
+            }
         }
 
         return imageList;
@@ -137,17 +148,18 @@ export class HomePageComponent extends React.Component{
         const trimedDisplayProject = displayProject.slice(0, displaySize);
         const imageList2 = this.mapImage(trimedDisplayProject);
         // const imageList2 = photosList;
-        // console.log('imageList2', imageList2);
+        // // console.log('imageList2', imageList2);
         // columns={2}
         // limitNodeSearch={2}
         // renderImage={Photo}
         // margin={7}
+        console.log('renderGridImages', trimedDisplayProject);
         return (
             <React.Fragment>
                 {   imageList2 && imageList2.length > 0 &&
                     <Gallery
                         photos={imageList2}
-                        columns={2}
+                        columns={1}
                         limitNodeSearch={2}
                         renderImage={Photo}
                         margin={7}
@@ -159,7 +171,7 @@ export class HomePageComponent extends React.Component{
 
     getDisplayProject(type) {
         let filteredList = [];
-        // console.log('getDisplayProject', type);
+        // // console.log('getDisplayProject', type);
 
         if (this.state.allProject) {
             if (!type || type === PROJECT_TYPE.all) {
@@ -168,7 +180,7 @@ export class HomePageComponent extends React.Component{
                 filteredList = this.state.allProject.filter(project => project.project.type === type);
             }
         }
-        // console.log('filteredList', filteredList);
+        // // console.log('filteredList', filteredList);
 
         return filteredList;
     }

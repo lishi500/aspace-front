@@ -52,7 +52,7 @@ export class AdminStaffPageComponent extends React.Component {
         const req = getApiUrl('getAllStaff');
         axios.get(req)
             .then((response) => {
-                console.log('load all staff', response);
+                // console.log('load all staff', response);
                 if (response && response.data) {
                     this.setState({allStaff: response.data});
                 }
@@ -101,7 +101,7 @@ export class AdminStaffPageComponent extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('currentStaff', this.state.currentStaff);
+        // console.log('currentStaff', this.state.currentStaff);
         const req = getApiPostWithPayloadUrl();
 
         axios.post(
@@ -142,7 +142,7 @@ export class AdminStaffPageComponent extends React.Component {
     }
 
     onDrop(acceptedFiles){
-        console.log('onDrop', acceptedFiles);
+        // console.log('onDrop', acceptedFiles);
         const req = getApiUrlWithParam('uploadImage', {staffId: this.state.currentStaff.id});
         const formData = new FormData();
 
@@ -156,7 +156,7 @@ export class AdminStaffPageComponent extends React.Component {
                 'Content-Type': 'multipart/form-data'
             }
         }).then(response => {
-            console.log('response data', response.data);
+            // console.log('response data', response.data);
             if (response && response.data) {
                 this.setState({currentStaff: {
                         ...this.state.currentStaff,
@@ -280,7 +280,7 @@ export class AdminStaffPageComponent extends React.Component {
     }
 
     renderStaffItem(staff) {
-        console.log(staff);
+        // // console.log(staff);
         const {id, name, position, info, image} = staff;
         return (
             <div className='projectItem'>

@@ -13,7 +13,18 @@
   height: auto;
 }
 .projectInfo {
-  margin-bottom: 100px
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 60%;
+  @include md {
+    width: 80%;
+  }
+  @include sm{
+    width: 95%;
+  }
 }
 .projectName {
   text-align: center;
