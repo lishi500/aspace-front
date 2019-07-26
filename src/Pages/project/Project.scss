@@ -13,7 +13,7 @@
   height: auto;
 }
 .projectInfo {
-  margin-bottom: 100px;
+  margin: 0 auto 100px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -38,6 +38,7 @@
   font-size: 14px;
   word-spacing: 1px;
   white-space: pre-line;
+  width: 100%;
 }
 .projectDescription:first-letter {
   font-size: 28px;

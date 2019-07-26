@@ -7,20 +7,23 @@ export function EnterPageComponent(props) {
     return (
         <div className="enterPage">
             <div className="enterFront">
+                {/*<Image*/}
+                {/*    className="enterImage"*/}
+                {/*    name='enter.jpg'*/}
+                {/*/>*/}
+                <div className="enterBack" />
                 <div className="enterBox">
                     <Link to="/home" className="enterButton">
                         ENTER
                     </Link>
                 </div>
-                <Image
-                    className="enterImage"
-                    name='enter.jpg'
-                />
             </div>
             <div className="enterLogo">
-                <Image className="enterLogoImage"
-                    name="logo.png"
-                />
+                <Link to="/home" className="enterButton">
+                    <Image className="enterLogoImage"
+                        name="logo.png"
+                    />
+                </Link>
             </div>
         </div>
     );

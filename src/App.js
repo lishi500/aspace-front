@@ -1,4 +1,5 @@
 import React from 'react';
+import HttpsRedirect from 'react-https-redirect';
 import EnterPageComponent from "./Pages/enter/EnterPage";
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import HomePageComponent from "./Pages/home/HomePage";
@@ -15,22 +16,24 @@ import {AboutPageComponent} from "./Pages/about/AboutPage";
 
 function App() {
   return (
-      <div className="App">
-          <Router>
-              <Route path="/" exact component={EnterPageComponent} />
-              <Route path="/home" exact component={HomePageComponent} />
-              <Route path="/home/:type" exact component={HomePageComponent} />
-              <Route path="/project" exact component={ProjectPageComponent} />
-              <Route path="/projectDetail/:id" exact component={ProjectDetailPageComponent} />
-              <Route path="/profile" exact component={ProfilePageComponent} />
-              <Route path="/about" exact component={AboutPageComponent} />
-              <Route path="/admin" exact component={AdminPageComponent} />
-              <Route path="/admin/project" exact component={AdminProjectPageComponent} />
-              <Route path="/admin/staff" exact component={AdminStaffPageComponent} />
-              <Route path="/contact" exact component={ContactPageComponent} />
-              <Route path="/client" exact component={ClientPageComponent} />
-          </Router>
-      </div>
+      <HttpsRedirect>
+          <div className="App">
+              <Router>
+                  <Route path="/" exact component={EnterPageComponent} />
+                  <Route path="/home" exact component={HomePageComponent} />
+                  <Route path="/home/:type" exact component={HomePageComponent} />
+                  <Route path="/project" exact component={ProjectPageComponent} />
+                  <Route path="/projectDetail/:id" exact component={ProjectDetailPageComponent} />
+                  <Route path="/profile" exact component={ProfilePageComponent} />
+                  <Route path="/about" exact component={AboutPageComponent} />
+                  <Route path="/admin" exact component={AdminPageComponent} />
+                  <Route path="/admin/project" exact component={AdminProjectPageComponent} />
+                  <Route path="/admin/staff" exact component={AdminStaffPageComponent} />
+                  <Route path="/contact" exact component={ContactPageComponent} />
+                  <Route path="/client" exact component={ClientPageComponent} />
+              </Router>
+          </div>
+      </HttpsRedirect>
   );
 }
 

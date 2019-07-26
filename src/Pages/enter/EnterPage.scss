@@ -1,4 +1,4 @@
-//@import "../../css/Common";
+@import "../../css/Common";
 
 .enterPage {
   display: flex;
@@ -6,9 +6,22 @@
   flex-flow: column;
 }
 .enterFront {
+  width: 100%;
   height: 90vh;
   position: relative;
   overflow: hidden;
+}
+
+.enterBack {
+  background-image: url(https://www.aspacedesign.com.au/images/enter.jpg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 .enterBox {
   position: absolute;
@@ -26,13 +39,26 @@
   text-decoration: none;
 }
 .enterImage {
-  top: 0;
-  left: -9999px;
-  right: -9999px;
-  margin: auto;
-  height: auto;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: auto;
+
+  @media (min-width: 1400px) {
+    height: auto;
+    width: 100%;
+  }
 }
+//.enterImage {
+//  top: 0;
+//  left: -9999px;
+//  right: -9999px;
+//  margin: auto;
+//  height: auto;
+//  width: 100%;
+//}
 .enterLogo {
   border: 1px blue;
   text-align: center;

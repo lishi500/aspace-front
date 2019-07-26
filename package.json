@@ -57,6 +57,7 @@
     "react-dev-utils": "^9.0.0",
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.4",
+    "react-https-redirect": "^1.1.0",
     "react-image": "^2.1.1",
     "react-images": "^1.0.0",
     "react-images-uploader": "^1.2.0-rc1",

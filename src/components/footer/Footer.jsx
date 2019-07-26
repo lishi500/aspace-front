@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from "../image/Image";
 import "./Footer.scss"
+import {Link} from "react-router-dom";
 
 export function LinkIcon(iconImageName, linkUrl) {
     return  (
@@ -15,9 +16,12 @@ export function FooterComponent(props) {
     const { isAbout } = props;
     return (
         <div className="footer">
-            <div className="footerLogo">
-                <Image name="logo.png" />
-            </div>
+            <Link to="/home">
+                <div className="footerLogo">
+                    <Image name="logo.png" />
+                </div>
+            </Link>
+
             { isAbout &&
                 <div className="footerAboutContact">
                     <div>STUDIO: 15 EPPING ROAD, DOUBLE BAY</div>
